@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Kanit';
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container-fluid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            max-width: 393px;
+        }
+
+        .container {
+            padding: 20px;
+            min-height: 83dvh;
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 1rem;
+        }
+
+        nav h3 {
+            font-family: kanit;
+            font-size: 20px;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .nav svg {
+            cursor: pointer;
+        }
+
+        .qr-section {
+            text-align: center;
+            margin-bottom: 15px;
+            width: 100%;
+            max-width: 393px;
+            border: 1px solid #AEAEAE;
+            border-radius: 25px;
+            padding: 15px 10px;
+        }
+
+        .qr-section img {
+            height: 250px;
+        }
+
+        .qr-section p {
+            font-size: 20px;
+            font-weight: 300;
+            margin: 10px 0 5px 0;
+            color: #000000;
+        }
+
+        .qr-section .time {
+            margin-left: 15px;
+            color: #369CD9;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+        }
+
+        .actions a {
+            font-size: 20px;
+            font-weight: 300;
+            color: #369CD9;
+            text-decoration: none;
+        }
+
+        .payment-instructions {
+            padding: 0 10px;
+            font-size: 15px;
+            font-weight: 300;
+            color: #000000;
+        }
+
+        .payment-instructions h2 {
+            font-size: 20px;
+            font-weight: 300;
+            margin-bottom: 17px;
+        }
+
+        .payment-instructions strong {
+            font-weight: 500;
+        }
+
+        .payment-instructions ol {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .payment-instructions ol li {
+            position: relative;
+            margin-bottom: 10px;
+            padding-left: 30px;
+        }
+
+        .payment-instructions ol li::before {
+            content: counter(li);
+            counter-increment: li;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 17px;
+            height: 17px;
+            line-height: 17px;
+            text-align: center;
+            background-color: #369CD9;
+            border-radius: 50%;
+            color: #000000;
+            margin-top: 3px;
+
+        }
+
+        .payment-instructions ol {
+            counter-reset: li;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid min-vh-100 border border-primary">
+        <nav>
+            <svg class="btn-back" width="12" height="20" viewBox="0 0 12 20" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M2.61526 9.99795L11.1073 1.27095C11.1772 1.20063 11.2325 1.11713 11.2699 1.0253C11.3073 0.933466 11.3262 0.835122 11.3253 0.735957C11.3245 0.636792 11.304 0.538775 11.2651 0.447578C11.2261 0.35638 11.1695 0.273814 11.0984 0.204657C11.0273 0.135499 10.9432 0.0811237 10.851 0.0446769C10.7588 0.00823013 10.6602 -0.00956431 10.5611 -0.0076766C10.4619 -0.00578889 10.3642 0.0157435 10.2734 0.0556744C10.1826 0.0956054 10.1007 0.153142 10.0323 0.224955L1.03226 9.47495C0.896042 9.61497 0.819824 9.80261 0.819824 9.99795C0.819824 10.1933 0.896042 10.3809 1.03226 10.521L10.0323 19.771C10.1007 19.8428 10.1826 19.9003 10.2734 19.9402C10.3642 19.9802 10.4619 20.0017 10.5611 20.0036C10.6602 20.0055 10.7588 19.9877 10.851 19.9512C10.9432 19.9148 11.0273 19.8604 11.0984 19.7913C11.1695 19.7221 11.2261 19.6395 11.2651 19.5483C11.304 19.4571 11.3245 19.3591 11.3253 19.26C11.3262 19.1608 11.3073 19.0624 11.2699 18.9706C11.2325 18.8788 11.1772 18.7953 11.1073 18.725L2.61526 9.99795Z"
+                    fill="black" />
+            </svg>
+
+            <h3>บัญชีธนาคาร</h3>
+            <svg class="btn-close" width="15" height="14" viewBox="0 0 15 14" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M0.925049 12.59L2.33505 14L7.92505 8.41L13.515 14L14.925 12.59L9.33505 7L14.925 1.41L13.515 0L7.92505 5.59L2.33505 0L0.925049 1.41L6.51505 7L0.925049 12.59Z"
+                    fill="black" />
+            </svg>
+        </nav>
+        <div class="container">
+            <div class="qr-section">
+                <img src="/public/TMB-QR-Promptpay_360x484px 2.png" alt="PromptPay QR" class="qr-image">
+                <p>สแกน QR นี้เพื่อจ่ายเงิน <span class="time">1 นาที</span></p>
+
+                <div class="actions">
+                    <div class="d-flex align-items-center">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6.86061 10.1773L2.80275 6.11947L3.93895 4.94269L6.04904 7.05278V0.438477H7.67218V7.05278L9.78226 4.94269L10.9185 6.11947L6.86061 10.1773ZM1.99118 13.4236C1.54482 13.4236 1.16284 13.2648 0.845245 12.9472C0.527651 12.6296 0.368583 12.2474 0.368042 11.8005V9.36575H1.99118V11.8005H11.73V9.36575H13.3532V11.8005C13.3532 12.2468 13.1944 12.6291 12.8768 12.9472C12.5592 13.2653 12.1769 13.4241 11.73 13.4236H1.99118Z"
+                                fill="#369CD9" />
+                        </svg>
+
+                        <a href="#" class="save ml-2">บันทึก</a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <svg width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M6.87657 3.12898C6.87657 1.90736 7.87246 0.916114 9.09939 0.916114C9.39069 0.915415 9.67927 0.972099 9.94866 1.08293C10.2181 1.19376 10.463 1.35656 10.6694 1.56205C10.8759 1.76753 11.0399 2.01167 11.152 2.28052C11.2641 2.54938 11.3222 2.83769 11.3229 3.12898C11.3229 4.35127 10.327 5.34251 9.09939 5.34251C8.805 5.34288 8.51347 5.28472 8.24175 5.17143C7.97003 5.05813 7.72353 4.89196 7.51659 4.68257L4.43929 6.77792C4.525 7.20483 4.48297 7.64752 4.31846 8.05067L7.69253 10.2682C8.08994 9.94408 8.58724 9.76744 9.10006 9.76825C9.39136 9.76764 9.67992 9.82441 9.94928 9.93532C10.2186 10.0462 10.4635 10.2091 10.6699 10.4147C10.8763 10.6202 11.0402 10.8644 11.1523 11.1333C11.2643 11.4022 11.3223 11.6905 11.3229 11.9818C11.3229 13.2034 10.327 14.1946 9.09939 14.1946C8.51121 14.1959 7.94662 13.9635 7.52978 13.5485C7.11294 13.1335 6.87798 12.57 6.87657 11.9818C6.87605 11.6715 6.94146 11.3646 7.06844 11.0815L3.72093 8.88323C3.31554 9.23572 2.79616 9.42937 2.25896 9.42832C1.96764 9.42902 1.67904 9.37231 1.40964 9.26143C1.14025 9.15055 0.895339 8.98767 0.688913 8.78211C0.482487 8.57655 0.318588 8.33233 0.206581 8.0634C0.0945746 7.79447 0.0366553 7.50611 0.0361328 7.21479C0.0367424 6.92352 0.094726 6.63523 0.206772 6.36638C0.318817 6.09753 0.48273 5.85338 0.689147 5.64789C0.895565 5.4424 1.14044 5.27958 1.40979 5.16875C1.67915 5.05791 1.9677 5.00122 2.25896 5.00192C2.96538 5.00192 3.59345 5.32923 4.00044 5.83913L6.98346 3.80818C6.91249 3.58877 6.87642 3.35958 6.87657 3.12898Z"
+                                fill="#369CD9" />
+                        </svg>
+
+                        <a href="#" class="share ml-2">แชร์</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="payment-instructions">
+                <h2>วิธีจ่ายเงิน</h2>
+                <ol>
+                    <li>กด <strong>‘บันทึก’</strong> รูป QR พร้อมเพย์ด้าน<br>บนลงในโทรศัพท์มือถือของคุณ</li>
+                    <li>เปิดแอปพลิเคชัน ธนาคาร เพื่อเริ่มทำการเติมเงิน</li>
+                    <li>ไปยังเมนู <strong>‘สแกน’</strong> หรือ <strong>‘สแกนจ่าย’</strong> จากนั้นกดที่ปุ่มรูปภาพ
+                        ในหน้าสแกนเพื่อ <strong>‘เลือกรูป QR’</strong> ในมือถือคุณ</li>
+                    <li>ใส่จำนวนเงิน ที่ต้องการเติม และทำการ<br>เติมเงินตามปกติ</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function selectAmount(button, amount) {
+            document.querySelectorAll('.amount-button').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+
+            button.classList.add('selected');
+
+            document.getElementById('selectedAmount').innerText = `${amount}`;
+        }
+        function submitAmount() {
+            alert('เติมเงินเรียบร้อยแล้ว');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Kanit;
+            background-color: black;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            width: 100%;
+            padding: 2rem 2rem 1rem 2rem;
+        }
+
+        nav h3 {
+            font-family: kanit;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 300;
+            margin: 0;
+        }
+
+        .container-fluid {
+            margin-bottom: 5dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 0;
+            max-width: 393px;
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .scanner-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .scanner-header {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .scanner-frame {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            border: 2px solid white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .scanner-frame::before,
+        .scanner-frame::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: red;
+            animation: scan 1.5s linear infinite;
+        }
+
+        .scanner-frame::after {
+            transform: rotate(90deg);
+        }
+
+        .qr-code {
+            width: 100%;
+            height: 100%;
+            background-image: url('/path/to/qr-code.png');
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%);
+        }
+
+        @keyframes scan {
+            0% {
+                top: 0;
+            }
+
+            100% {
+                top: 100%;
+            }
+        }
+
+        .icon-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .icon-container p {
+            font-size: 12px;
+            font-weight: 300;
+            margin-top: 5px;
+        }
+
+        .icon-button {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #D9D9D96B;
+            border: 3px solid #9B9B9B;
+            border-radius: 100%;
+        }
+
+        .qrcode-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            margin: auto;
+        }
+
+        .qrcode-wrapper {
+            position: relative;
+        }
+
+        .qr-img {
+            width: 100%;
+            max-width: 300px;
+            display: block;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .svg-card-field,
+        .svg-frame {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            /* So it doesn't block interactions */
+        }
+
+        .svg-card-field {
+            width: 68px;
+            height: 68px;
+        }
+
+        .svg-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 54px;
+            height: 54px;
+            pointer-events: none;
+        }
+
+        .svg-line {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 43px;
+            height: 709px;
+            pointer-events: none;
+        }
+
+        .svg-frame {
+            width: 320px;
+            height: 320px;
+        }
+
+        .qrcode-container .qr-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 50px;
+            padding: 0px 10px;
+            background-color: #ffffff;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid min-vh-100">
+        <nav>
+            <svg class="btn-back" width="12" height="20" viewBox="0 0 12 20" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M2.61526 9.99795L11.1073 1.27095C11.1772 1.20063 11.2325 1.11713 11.2699 1.0253C11.3073 0.933466 11.3262 0.835122 11.3253 0.735957C11.3245 0.636792 11.304 0.538775 11.2651 0.447578C11.2261 0.35638 11.1695 0.273814 11.0984 0.204657C11.0273 0.135499 10.9432 0.0811237 10.851 0.0446769C10.7588 0.00823013 10.6602 -0.00956431 10.5611 -0.0076766C10.4619 -0.00578889 10.3642 0.0157435 10.2734 0.0556744C10.1826 0.0956054 10.1007 0.153142 10.0323 0.224955L1.03226 9.47495C0.896042 9.61497 0.819824 9.80261 0.819824 9.99795C0.819824 10.1933 0.896042 10.3809 1.03226 10.521L10.0323 19.771C10.1007 19.8428 10.1826 19.9003 10.2734 19.9402C10.3642 19.9802 10.4619 20.0017 10.5611 20.0036C10.6602 20.0055 10.7588 19.9877 10.851 19.9512C10.9432 19.9148 11.0273 19.8604 11.0984 19.7913C11.1695 19.7221 11.2261 19.6395 11.2651 19.5483C11.304 19.4571 11.3245 19.3591 11.3253 19.26C11.3262 19.1608 11.3073 19.0624 11.2699 18.9706C11.2325 18.8788 11.1772 18.7953 11.1073 18.725L2.61526 9.99795Z"
+                    fill="white" />
+            </svg>
+            <h3>สแกนคิวอาร์ โค้ด / บาร์โค้ด</h3>
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M11.2947 0.585693H6.54395C3.23024 0.585693 0.543945 3.27199 0.543945 6.58569V11.3366H1.54395V6.58569C1.54395 3.82427 3.78252 1.58569 6.54395 1.58569H11.2947V0.585693ZM20.9762 1.58569V0.585693H25.7271C29.0408 0.585693 31.7271 3.27199 31.7271 6.58569V11.3366H30.7271V6.58569C30.7271 3.82427 28.4885 1.58569 25.7271 1.58569H20.9762ZM20.9762 30.7688H25.7271C28.4885 30.7688 30.7271 28.5302 30.7271 25.7688V21.018H31.7271V25.7688C31.7271 29.0825 29.0408 31.7688 25.7271 31.7688H20.9762V30.7688ZM1.54395 21.018V25.7688C1.54395 28.5302 3.78252 30.7688 6.54395 30.7688H11.2947V31.7688H6.54395C3.23024 31.7688 0.543945 29.0825 0.543945 25.7688V21.018H1.54395Z"
+                    fill="white" />
+                <circle cx="15.7843" cy="10.9991" r="3.98837" stroke="white" />
+                <path
+                    d="M10.114 24.5644V20.7344C10.1673 18.4956 13.226 17.6224 13.226 17.6224C13.226 17.6224 16.2943 17.2361 18.1932 17.6224C19.3851 17.7781 21.4547 19.296 21.4547 20.8839V24.5046"
+                    stroke="white" />
+            </svg>
+
+        </nav>
+
+        <div class="qrcode-container">
+            <div class="qrcode-wrapper">
+                <img src="/public/TMB-QR-Promptpay_360x484px 1.png" alt="qrcode">
+                
+                <svg class="svg-line" width="43" height="709" viewBox="0 0 43 709" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="21.3521" cy="341.937" r="20.7324" stroke="#FF0000" />
+                    <line x1="22.3521" y1="90.361816" x2="22.352" y2="708.74" stroke="#FF0000" stroke-width="2" />
+                    <circle cx="21.3521" cy="341.937" r="11.0513" fill="#FF0000" />
+                </svg>
+
+                <svg class="svg-frame" width="322" height="321" viewBox="0 0 322 321" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M22.3491 0.506226H1.84717H0.847168V1.50623V19.4065H1.84717V1.50623H22.3491V0.506226ZM299.725 1.50623V0.506226H320.227H321.227V1.50623V19.4065H320.227V1.50623H299.725ZM299.725 319.886H320.227V296.782H321.227V319.886V320.886H320.227H299.725V319.886ZM1.84717 296.782V319.886H22.3491V320.886H1.84717H0.847168V319.886V296.782H1.84717Z"
+                        fill="white" />
+                </svg>
+                
+            </div>
+        </div>
+
+        <div class="icon-container">
+            <div class="d-flex flex-column align-items-center">
+                <div class="icon-button">
+                    <svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M5.82511 7.30005L0.395942 1.87262C0.315229 1.79191 0.251204 1.69609 0.207522 1.59063C0.16384 1.48518 0.141357 1.37215 0.141357 1.258C0.141357 1.14386 0.16384 1.03083 0.207522 0.92537C0.251204 0.819913 0.315229 0.724092 0.395942 0.643379C0.476656 0.562665 0.572476 0.49864 0.677934 0.454958C0.783391 0.411277 0.896419 0.388794 1.01056 0.388794C1.12471 0.388794 1.23774 0.411277 1.3432 0.454958C1.44865 0.49864 1.54447 0.562665 1.62519 0.643379L27.6685 26.6867C27.8315 26.8497 27.9231 27.0708 27.9231 27.3013C27.9231 27.5319 27.8315 27.7529 27.6685 27.9159C27.5055 28.079 27.2844 28.1705 27.0539 28.1705C26.8234 28.1705 26.6023 28.079 26.4393 27.9159L17.2581 18.7313L8.57007 27.6017C7.26096 28.9594 4.99519 27.7059 5.45356 25.8724L7.48494 17.7486H5.28167C4.99625 17.7486 4.71473 17.6823 4.45927 17.555C4.20382 17.4277 3.98142 17.2428 3.80957 17.0149C3.63772 16.787 3.52113 16.5223 3.46897 16.2417C3.41681 15.9611 3.43051 15.6722 3.50899 15.3978L5.82511 7.30005ZM16.0306 17.5056L7.22797 8.70292L5.17923 15.8735C5.16187 15.943 5.21222 16.0124 5.28341 16.0124H8.59785C8.72991 16.0124 8.86022 16.0425 8.97889 16.1004C9.09756 16.1583 9.20144 16.2426 9.28264 16.3467C9.36384 16.4509 9.42021 16.5721 9.44747 16.7013C9.47472 16.8306 9.47214 16.9643 9.43992 17.0923L7.13943 26.2943C7.13484 26.3107 7.13308 26.3277 7.13422 26.3447C7.13407 26.3514 7.13588 26.358 7.13943 26.3638C7.15201 26.3856 7.17029 26.4036 7.19231 26.4158C7.21433 26.428 7.23926 26.4341 7.26444 26.4332C7.27059 26.432 7.27648 26.4296 7.2818 26.4263C7.29739 26.4183 7.31149 26.4078 7.32347 26.395L7.32867 26.3881L16.0306 17.5056ZM22.3904 11.0121L18.4596 15.0245L19.6871 16.252L23.6353 12.224L23.6405 12.2153C24.7534 11.0572 23.953 9.071 22.3105 9.071H17.8589L20.0482 2.83102L20.0534 2.81713C20.1459 2.53987 20.1712 2.2446 20.1271 1.95567C20.083 1.66675 19.9709 1.39244 19.7999 1.15536C19.629 0.918291 19.4041 0.725249 19.1439 0.592158C18.8837 0.459066 18.5956 0.389738 18.3033 0.38989H9.18991C8.36694 0.38989 7.64293 0.935064 7.41722 1.72678L6.91372 3.48036L8.31832 4.88497L9.084 2.20424C9.09052 2.18134 9.10445 2.16124 9.12362 2.14711C9.14278 2.13297 9.1661 2.12559 9.18991 2.12611H18.3051C18.3763 2.12611 18.4266 2.19556 18.4075 2.26501L15.8153 9.6509C15.7692 9.78185 15.7552 9.92195 15.7745 10.0594C15.7937 10.1969 15.8456 10.3278 15.9259 10.4411C16.0062 10.5543 16.1125 10.6467 16.2358 10.7104C16.3592 10.7741 16.496 10.8073 16.6348 10.8072H22.3105C22.3418 10.8072 22.3557 10.8142 22.3644 10.8211C22.3839 10.8365 22.3989 10.8569 22.4078 10.8801C22.4186 10.904 22.4228 10.9304 22.4199 10.9565C22.4165 10.9778 22.4061 10.9974 22.3904 11.0121Z"
+                            fill="white" />
+                    </svg>
+                </div>
+                <p>เปิดแฟลช</p>
+            </div>
+            <div class="d-flex flex-column align-items-center">
+                <div class="icon-button">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M5.02051 1.151H22.8647C23.8113 1.151 24.719 1.527 25.3883 2.19629C26.0576 2.86558 26.4336 3.77333 26.4336 4.71985V22.5641C26.4336 23.5106 26.0576 24.4184 25.3883 25.0876C24.719 25.7569 23.8113 26.1329 22.8647 26.1329H5.02051C4.07399 26.1329 3.16624 25.7569 2.49695 25.0876C1.82766 24.4184 1.45166 23.5106 1.45166 22.5641V4.71985C1.45166 3.77333 1.82766 2.86558 2.49695 2.19629C3.16624 1.527 4.07399 1.151 5.02051 1.151Z"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M26.4336 18.9953L21.0803 13.642L15.7271 18.9685M22.8647 26.133L6.80493 10.0732L1.45166 15.4264"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <p>เลือกรูป</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+</html>

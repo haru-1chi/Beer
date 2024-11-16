@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <style>
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 347px;
+            padding-bottom: 1rem;
+        }
+
+        .container-fluid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 0;
+            max-width: 393px;
+        }
+
+        h5 {
+            font-family: Kanit;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            text-align: left;
+            color: #B0B0B0;
+            text-decoration: underline;
+            text-decoration-color: #B0B0B0;
+        }
+
+        h5:hover {
+            color: #369CD9;
+            text-decoration-color: #369CD9;
+        }
+
+        h4 {
+            font-family: Kanit;
+            font-size: 20px;
+            font-weight: lighter;
+            line-height: 20px;
+            margin: 0px;
+        }
+
+        p {
+            color: #828282;
+            font-family: Kanit;
+            font-size: 12px;
+            line-height: 20px;
+            margin: 0px;
+            font-weight: normal;
+        }
+
+        a {
+            color: #369CD9;
+            font-family: Kanit;
+            font-size: 14px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        a:hover {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        .container {
+            min-height: calc(90vh - 200px);
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+        }
+
+        .container-register {
+            width: 100%;
+            background-color: #F2F2F2;
+            padding-inline: 15px;
+            padding-block: 20px;
+            border-radius: 15px;
+        }
+
+        .btn-custom {
+            width: 100% !important;
+            font-family: Kanit;
+            background-color: #369CD9;
+            color: white;
+            border: none;
+            padding: 7px 28px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: normal;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn-custom:hover {
+            background-color: #2980b9;
+            color: #f1f1f1;
+        }
+
+        .svg-share {
+            margin-right: 0.5rem;
+        }
+
+        .otp-inputs {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .otp-circle {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid #369CD9;
+        }
+
+        .number-pad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 45px;
+            margin-top: 90px;
+        }
+
+        .number-pad button {
+            font-size: 36px;
+            padding: 10px 15px ;
+            background-color: #FFFFFF;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .number-pad button:active {
+            background-color: #2980b9;
+        }
+
+        .clear {
+            font-size: 20px !important;
+        }
+
+        .backspace {
+            font-size: 30px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid min-vh-100">
+        <div class="w-100 py-4 border-bottom">
+            <img src="/public/Logo.png" alt="" class="mx-auto d-block">
+        </div>
+
+
+        <h4>ตั้งรหัส PIN 6 หลัก</h4>
+        <div class="otp-inputs    mt-3 mb-2" id="otpCircles">
+            <div class="otp-circle" id="circle-1"></div>
+            <div class="otp-circle" id="circle-2"></div>
+            <div class="otp-circle" id="circle-3"></div>
+            <div class="otp-circle" id="circle-4"></div>
+            <div class="otp-circle" id="circle-5"></div>
+            <div class="otp-circle" id="circle-6"></div>
+        </div>
+        <h5 class=" ">ลืมรหัสผ่าน</h5>
+        <div class="number-pad   ">
+            <button onclick="inputDigit('1')">1</button>
+            <button onclick="inputDigit('2')">2</button>
+            <button onclick="inputDigit('3')">3</button>
+            <button onclick="inputDigit('4')">4</button>
+            <button onclick="inputDigit('5')">5</button>
+            <button onclick="inputDigit('6')">6</button>
+            <button onclick="inputDigit('7')">7</button>
+            <button onclick="inputDigit('8')">8</button>
+            <button onclick="inputDigit('9')">9</button>
+            <button class="clear" onclick="clearPin()">clear</button>
+            <button onclick="inputDigit('0')">0</button>
+            <button class="backspace" onclick="deleteDigit()">⌫</button>
+        </div>
+
+
+    </div>
+
+
+
+    <script>
+        let pin = "";
+
+        // Add event listener to capture keyboard input
+        document.addEventListener('keydown', function (event) {
+            const key = event.key;
+
+            if (!isNaN(key) && key !== ' ') { // Check if key is a number
+                inputDigit(key);
+            } else if (key === 'Backspace') {
+                deleteDigit();
+            } else if (key === 'Enter') {
+                clearPin();
+            }
+        });
+
+        function inputDigit(digit) {
+            if (pin.length < 6) {
+                pin += digit;
+                updateCircles();
+            }
+        }
+
+        function deleteDigit() {
+            if (pin.length > 0) {
+                pin = pin.slice(0, -1);
+                updateCircles();
+            }
+        }
+
+        function clearPin() {
+            pin = "";
+            updateCircles();
+        }
+
+        function updateCircles() {
+            for (let i = 1; i <= 6; i++) {
+                document.getElementById("circle-" + i).style.backgroundColor = i <= pin.length ? "#369CD9" : "#ffffff";
+            }
+        }
+    </script>
+</body>
+
+</html>
