@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Kanit';
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container-fluid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            max-width: 393px;
+        }
+
+        .container {
+            padding: 10px;
+            min-height: 83dvh;
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            background-color: #369CD9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            height: 100px;
+            padding: 1rem;
+        }
+
+        nav h3 {
+            font-family: kanit;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        .nav svg {
+            cursor: pointer;
+        }
+
+
+        /* Privacy Settings */
+        .privacy-settings {
+            margin-top: 10px;
+            padding: 20px;
+            border-radius: 11px;
+            box-shadow: 0px 2px 4px 0px #0000001A;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #000000;
+            font-weight: 300;
+            margin-top: 15px;
+            margin-left: 10px;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .setting-item select{
+            border: none;
+            font-size: 20px;
+            color: #C5C1C1;
+        }
+        .setting-item select::fo{
+            border: none;
+            font-size: 20px;
+            color: #C5C1C1;
+        }
+        .setting-item span {
+            font-size: 20px;
+            color: #000000;
+            font-weight: 300;
+            color: #333;
+        }
+
+        .language {
+            color: #888;
+            font-size: 16px;
+        }
+
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            width: 40px;
+            height: 20px;
+            display: inline-block;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-switch .slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .toggle-switch input:checked+.slider {
+            background-color: #369CD9;
+        }
+
+        .toggle-switch .slider:before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+        .toggle-switch input:checked+.slider:before {
+            transform: translateX(20px);
+        }
+
+        /* Contact Section */
+        .contact-settings {
+            padding: 5px;
+            border-top: 1px solid #EEE;
+        }
+
+        .contact-settings h2 {
+            font-size: 20px;
+            color: #000000;
+            font-weight: 300;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .contact-settings p {
+            font-size: 14px;
+            color: #9A9A9B;
+            font-weight: 300;
+            margin: 15px 30px 25px 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #F1F1F1;
+            border-radius: 8px;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+
+        .contact-item .text {
+            font-size: 32px;
+            font-weight: 200;
+            color: #666666;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            margin: 10px 0 30px 0;
+        }
+
+
+        .icon {
+            margin: 0 5px 0 20px;
+        }
+
+        .text {
+            font-size: 20px;
+            font-weight: 400;
+            color: #4F4F4F;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid min-vh-100 border border-primary">
+        <!-- Header -->
+        <nav>
+            <svg class="btn-back" width="12" height="20" viewBox="0 0 12 20" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M2.61526 9.99795L11.1073 1.27095C11.1772 1.20063 11.2325 1.11713 11.2699 1.0253C11.3073 0.933466 11.3262 0.835122 11.3253 0.735957C11.3245 0.636792 11.304 0.538775 11.2651 0.447578C11.2261 0.35638 11.1695 0.273814 11.0984 0.204657C11.0273 0.135499 10.9432 0.0811237 10.851 0.0446769C10.7588 0.00823013 10.6602 -0.00956431 10.5611 -0.0076766C10.4619 -0.00578889 10.3642 0.0157435 10.2734 0.0556744C10.1826 0.0956054 10.1007 0.153142 10.0323 0.224955L1.03226 9.47495C0.896042 9.61497 0.819824 9.80261 0.819824 9.99795C0.819824 10.1933 0.896042 10.3809 1.03226 10.521L10.0323 19.771C10.1007 19.8428 10.1826 19.9003 10.2734 19.9402C10.3642 19.9802 10.4619 20.0017 10.5611 20.0036C10.6602 20.0055 10.7588 19.9877 10.851 19.9512C10.9432 19.9148 11.0273 19.8604 11.0984 19.7913C11.1695 19.7221 11.2261 19.6395 11.2651 19.5483C11.304 19.4571 11.3245 19.3591 11.3253 19.26C11.3262 19.1608 11.3073 19.0624 11.2699 18.9706C11.2325 18.8788 11.1772 18.7953 11.1073 18.725L2.61526 9.99795Z"
+                    fill="white" />
+            </svg>
+            <h3>ตั้งค่า</h3>
+            <svg class="btn-close" width="15" height="14" viewBox="0 0 15 14" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M0.925049 12.59L2.33505 14L7.92505 8.41L13.515 14L14.925 12.59L9.33505 7L14.925 1.41L13.515 0L7.92505 5.59L2.33505 0L0.925049 1.41L6.51505 7L0.925049 12.59Z"
+                    fill="white" />
+            </svg>
+        </nav>
+        <div class="container">
+            <h2>ความเป็นส่วนตัว</h2>
+            <section class="privacy-settings">
+
+                <div class="setting-item">
+                    <span>การแจ้งเตือน</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <span>ภาษา</span>
+                    <select id="language">
+                        <option value="th">ไทย</option>
+                        <option value="la">ลาว</option>
+                        <option value="en">อังกฤษ</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="contact-settings">
+                <h2>ติดต่อเรา</h2>
+                <p>หากคุณต้องการติดต่อเรา สามารถติดต่อทางช่องทางด้านล่างนี้</p>
+                <div class="contact-item">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.28183 4.81692C7.07296 4.12219 6.92957 3.40944 6.85352 2.68799C6.77745 1.96898 6.15001 1.43408 5.42616 1.43408H2.07191C1.20948 1.43408 0.544734 2.17926 0.620802 3.03829C1.38584 11.6945 8.28088 18.5905 16.9381 19.3551C17.7971 19.4312 18.5418 18.7688 18.5418 17.9064V14.9155C18.5418 13.8239 18.0074 13.1989 17.2884 13.1229C16.5669 13.0468 15.8542 12.9034 15.1595 12.6945C14.7475 12.5723 14.3102 12.564 13.8939 12.6704C13.4776 12.7767 13.0979 12.9939 12.7951 13.2987L11.3595 14.7343C8.77027 13.3315 6.64486 11.2061 5.24205 8.61692L6.67764 7.18132C6.98249 6.87852 7.19963 6.4988 7.30601 6.0825C7.41239 5.6662 7.40403 5.22886 7.28183 4.81692Z"
+                            stroke="#FC6336" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span class="text">(+66) 02-426-3925</span>
+                </div>
+                <div>
+                    <svg class="icon" width="33" height="26" viewBox="0 0 33 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M27.9958 11.6946C27.8973 11.6633 27.7904 11.6724 27.6987 11.7199C27.6069 11.7674 27.5377 11.8494 27.5064 11.9478C27.4751 12.0463 27.4842 12.1532 27.5317 12.245C27.5792 12.3367 27.6612 12.4059 27.7597 12.4372C30.805 13.4074 32.1632 14.8544 32.1632 17.1314C32.1632 19.1566 30.3156 20.7284 29.2153 21.4858C29.1632 21.5216 29.1206 21.5695 29.0911 21.6254C29.0616 21.6814 29.0462 21.7436 29.0462 21.8068V24.7859C28.1106 24.431 27.2748 23.8548 26.6103 23.1066C26.5652 23.0564 26.508 23.0187 26.4442 22.997C26.3803 22.9753 26.3119 22.9704 26.2456 22.9827C26.0235 23.0256 25.7968 23.0864 25.5669 23.1479C25.1695 23.2547 24.7596 23.3653 24.3708 23.3653C22.3697 23.3653 20.9686 22.9352 19.5363 21.8824C19.453 21.8211 19.3488 21.7955 19.2466 21.811C19.1444 21.8266 19.0525 21.8821 18.9912 21.9654C18.93 22.0487 18.9043 22.1529 18.9198 22.2551C18.9354 22.3574 18.9909 22.4492 19.0742 22.5105C20.6538 23.6716 22.1881 24.1446 24.3708 24.1446C24.8625 24.1446 25.3238 24.0207 25.7695 23.9007C25.9082 23.8625 26.0461 23.8251 26.1825 23.7931C27.6389 25.3314 29.2862 25.6812 29.3579 25.6953C29.4145 25.707 29.473 25.7059 29.5291 25.692C29.5852 25.6781 29.6375 25.6518 29.6821 25.615C29.7269 25.5786 29.7631 25.5326 29.7879 25.4804C29.8127 25.4283 29.8255 25.3712 29.8255 25.3134V22.0102C31.8375 20.5756 32.9424 18.8488 32.9424 17.1314C32.9424 14.4967 31.3707 12.7692 27.9958 11.6946Z"
+                            fill="#FC6336" />
+                        <path
+                            d="M25.9293 11.2874C25.9293 5.29031 20.4605 0.767578 13.2097 0.767578C5.92219 0.767578 0.214233 5.38927 0.214233 11.2889C0.214233 14.8259 2.71639 17.36 4.8897 18.8936V24.0646C4.8901 24.1295 4.90665 24.1933 4.93785 24.2502C4.96905 24.3072 5.01392 24.3554 5.06842 24.3907C5.12292 24.4259 5.18533 24.447 5.25004 24.4522C5.31474 24.4573 5.3797 24.4462 5.43906 24.42C5.55283 24.3693 8.21239 23.1607 10.4878 20.6726C11.4735 20.8557 12.5886 21.0318 13.6001 21.0318C20.9741 21.0318 25.9293 17.1153 25.9293 11.2874ZM13.5993 20.2526C12.5785 20.2526 11.4182 20.057 10.4177 19.8661C10.3513 19.8539 10.283 19.8589 10.2192 19.8806C10.1554 19.9023 10.0981 19.9399 10.053 19.99C8.45552 21.7916 6.57832 22.9363 5.66894 23.4295V18.6902C5.66891 18.627 5.65351 18.5647 5.62405 18.5088C5.59459 18.4528 5.55196 18.4049 5.49984 18.3691C3.4442 16.9548 0.993477 14.5797 0.993477 11.2889C0.993477 5.82565 6.35935 1.54682 13.2097 1.54682C20.0172 1.54682 25.15 5.73448 25.15 11.2874C25.15 16.6501 20.5081 20.2526 13.5993 20.2526Z"
+                            fill="#FC6336" />
+                        <path
+                            d="M13.0718 9.72852C12.2123 9.72852 11.5133 10.4275 11.5133 11.287C11.5133 12.1465 12.2123 12.8455 13.0718 12.8455C13.9313 12.8455 14.6303 12.1465 14.6303 11.287C14.6303 10.4275 13.9313 9.72852 13.0718 9.72852ZM13.0718 12.0662C12.8711 12.0573 12.6817 11.9713 12.5429 11.8261C12.4041 11.6809 12.3266 11.4878 12.3266 11.287C12.3266 11.0862 12.4041 10.8931 12.5429 10.7479C12.6817 10.6028 12.8711 10.5167 13.0718 10.5078C13.2724 10.5167 13.4619 10.6028 13.6007 10.7479C13.7395 10.8931 13.817 11.0862 13.817 11.287C13.817 11.4878 13.7395 11.6809 13.6007 11.8261C13.4619 11.9713 13.2724 12.0573 13.0718 12.0662ZM18.5265 9.72852C17.667 9.72852 16.968 10.4275 16.968 11.287C16.968 12.1465 17.667 12.8455 18.5265 12.8455C19.386 12.8455 20.085 12.1465 20.085 11.287C20.085 10.4275 19.386 9.72852 18.5265 9.72852ZM18.5265 12.0662C18.3259 12.0573 18.1364 11.9713 17.9976 11.8261C17.8588 11.6809 17.7813 11.4878 17.7813 11.287C17.7813 11.0862 17.8588 10.8931 17.9976 10.7479C18.1364 10.6028 18.3259 10.5167 18.5265 10.5078C18.7271 10.5167 18.9166 10.6028 19.0554 10.7479C19.1942 10.8931 19.2717 11.0862 19.2717 11.287C19.2717 11.4878 19.1942 11.6809 19.0554 11.8261C18.9166 11.9713 18.7271 12.0573 18.5265 12.0662ZM7.61708 9.80254C6.75758 9.80254 6.05859 10.5015 6.05859 11.361C6.05859 12.2205 6.75758 12.9195 7.61708 12.9195C8.47659 12.9195 9.17557 12.2205 9.17557 11.361C9.17557 10.5015 8.47659 9.80254 7.61708 9.80254ZM7.61708 12.1403C7.41644 12.1313 7.227 12.0453 7.08819 11.9001C6.94938 11.755 6.87192 11.5619 6.87192 11.361C6.87192 11.1602 6.94938 10.9671 7.08819 10.8219C7.227 10.6768 7.41644 10.5908 7.61708 10.5818C7.81772 10.5908 8.00717 10.6768 8.14597 10.8219C8.28478 10.9671 8.36225 11.1602 8.36225 11.361C8.36225 11.5619 8.28478 11.755 8.14597 11.9001C8.00717 12.0453 7.81772 12.1313 7.61708 12.1403Z"
+                            fill="#FC6336" />
+                    </svg>
+                    <span class="text">Chat Support via LINE OA</span>
+                </div>
+                <div class="contact-item">
+                    <span class="text">@ites.co.th</span>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

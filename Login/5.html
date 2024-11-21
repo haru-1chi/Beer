@@ -119,7 +119,7 @@
         }
 
         .selected-amount h1 {
-            font-size: 80px;
+            font-size: 70px;
             font-weight: 500;
             color: #369CD9;
             margin: 0;
@@ -215,10 +215,12 @@
                     <p>จำนวนเงิน</p>
                     <div class="d-flex align-items-end">
                         <h1 id="selectedAmount">50</h1>
-                        <p class="ml-4">บาท</p>
+                        <p class="ml-3">บาท</p>
                     </div>
                 </div>
-                <button class="submit-button border border-primary" onclick="submitAmount()">เติมเงิน</button>
+                <a href="6.html">
+                    <button class="submit-button border border-primary">เติมเงิน</button>
+                </a>
             </div>
 
         </div>
@@ -233,9 +235,6 @@
             button.classList.add('selected');
 
             document.getElementById('selectedAmount').innerText = `${amount}`;
-        }
-        function submitAmount() {
-            alert('เติมเงินเรียบร้อยแล้ว');
         }
     </script>
 </body>

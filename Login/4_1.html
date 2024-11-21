@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Kanit';
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container-fluid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            max-width: 393px;
+        }
+
+        .container {
+            padding: 10px;
+            min-height: 83dvh;
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        nav {
+            background-color: #369CD9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            height: 100px;
+            padding: 1rem;
+        }
+
+        nav h3 {
+            font-family: kanit;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        .nav svg {
+            cursor: pointer;
+        }
+
+        /* Pay Button */
+        .payment-container {
+            padding: 0 20px;
+        }
+
+        .payment-container span {
+            color: #9A9A9B;
+            font-size: 20px;
+            font-weight: 300;
+        }
+
+        .payment-toggle-section {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .toggle-button {
+            width: 150px;
+            background-color: #fff;
+            color: #000000;
+            border: 1px solid #0074C8;
+            border-radius: 12px;
+            padding: 5px;
+            font-size: 20px;
+            font-weight: 300;
+            text-align: center;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+
+        .toggle-button:hover {
+            background-color: #00873F;
+            color: #fff;
+            ;
+            border: none;
+        }
+
+        .pay-button {
+            width: 100%;
+            background-color: #369CD9;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .pay-button:hover {
+            background-color: #2980b9;
+        }
+
+        .form-control {
+            height: 50px;
+            border: 1px solid #CDCDCD;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: 300;
+            color: #636363;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid min-vh-100">
+        <!-- Header -->
+        <nav>
+            <svg class="btn-back" width="12" height="20" viewBox="0 0 12 20" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M2.61526 9.99795L11.1073 1.27095C11.1772 1.20063 11.2325 1.11713 11.2699 1.0253C11.3073 0.933466 11.3262 0.835122 11.3253 0.735957C11.3245 0.636792 11.304 0.538775 11.2651 0.447578C11.2261 0.35638 11.1695 0.273814 11.0984 0.204657C11.0273 0.135499 10.9432 0.0811237 10.851 0.0446769C10.7588 0.00823013 10.6602 -0.00956431 10.5611 -0.0076766C10.4619 -0.00578889 10.3642 0.0157435 10.2734 0.0556744C10.1826 0.0956054 10.1007 0.153142 10.0323 0.224955L1.03226 9.47495C0.896042 9.61497 0.819824 9.80261 0.819824 9.99795C0.819824 10.1933 0.896042 10.3809 1.03226 10.521L10.0323 19.771C10.1007 19.8428 10.1826 19.9003 10.2734 19.9402C10.3642 19.9802 10.4619 20.0017 10.5611 20.0036C10.6602 20.0055 10.7588 19.9877 10.851 19.9512C10.9432 19.9148 11.0273 19.8604 11.0984 19.7913C11.1695 19.7221 11.2261 19.6395 11.2651 19.5483C11.304 19.4571 11.3245 19.3591 11.3253 19.26C11.3262 19.1608 11.3073 19.0624 11.2699 18.9706C11.2325 18.8788 11.1772 18.7953 11.1073 18.725L2.61526 9.99795Z"
+                    fill="white" />
+            </svg>
+            <h3>เลือกวิธีการดื่ม</h3>
+            <svg class="btn-close" width="15" height="14" viewBox="0 0 15 14" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M0.925049 12.59L2.33505 14L7.92505 8.41L13.515 14L14.925 12.59L9.33505 7L14.925 1.41L13.515 0L7.92505 5.59L2.33505 0L0.925049 1.41L6.51505 7L0.925049 12.59Z"
+                    fill="white" />
+            </svg>
+        </nav>
+        <div class="container">
+            <div class="payment-container">
+                <div class="payment-toggle-section">
+                    <button class="toggle-button" id="beer-toggle">ตามจำนวนเบียร์</button>
+                    <button class="toggle-button" id="money-toggle">ตามจำนวนเงิน</button>
+                </div>
+
+                <select class="form-control" id="beer-select" required>
+                    <option class="selected-option" value="" disabled selected>กรุณาระบุจำนวนเบียร์</option>
+                    <option>100 (10 บาท)</option>
+                    <option>200 (20 บาท)</option>
+                    <option>300 (30 บาท)</option>
+                    <option>400 (40 บาท)</option>
+                    <option>500 (50 บาท)</option>
+                    <option>600 (60 บาท)</option>
+                    <option>700 (70 บาท)</option>
+                    <option>800 (80 บาท)</option>
+                    <option>900 (90 บาท)</option>
+                    <option>1000 (100 บาท)</option>
+                </select>
+
+                <div id="money-input" style="display: none;">
+                    <input
+                        class="form-control"
+                        type="text"
+                        id="money-field"
+                        placeholder="ระบุจำนวนเงิน"
+                    />
+                    <span class="ml-2" id="money-display">(ml)</span>
+                </div>
+            </div>
+
+
+            <!-- Pay Button -->
+            <button class="pay-button">เริ่ม</button>
+        </div>
+    </div>
+</body>
+<script>
+    const beerToggle = document.getElementById('beer-toggle');
+    const moneyToggle = document.getElementById('money-toggle');
+    const beerSelect = document.getElementById('beer-select');
+    const moneyInput = document.getElementById('money-input');
+    const moneyField = document.getElementById('money-field');
+    const moneyDisplay = document.getElementById('money-display');
+
+    beerToggle.style.backgroundColor = '#00873F';
+    beerToggle.style.color = '#FFF';
+    beerSelect.style.display = 'block';
+
+    beerToggle.addEventListener('click', () => {
+        beerSelect.style.display = 'block';
+        moneyInput.style.display = 'none';
+        beerToggle.style.backgroundColor = '#00873F';
+        beerToggle.style.color = '#FFF';
+        moneyToggle.style.backgroundColor = '';
+        moneyToggle.style.color = '';
+    });
+
+    moneyToggle.addEventListener('click', () => {
+        beerSelect.style.display = 'none';
+        moneyInput.style.display = 'block';
+        moneyToggle.style.backgroundColor = '#00873F';
+        moneyToggle.style.color = '#FFF';
+        beerToggle.style.backgroundColor = '';
+        beerToggle.style.color = '';
+    });
+
+    moneyField.addEventListener('input', () => {
+            const value = moneyField.value;
+            moneyDisplay.textContent = value ? `(${value} ml)` : '(ml)';
+        });
+</script>
+
+</html>

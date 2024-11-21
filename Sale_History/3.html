@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Kanit';
+            background-color: #F9F9F9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container-fluid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            max-width: 393px;
+        }
+
+        .container {
+            padding: 20px 30px;
+            min-height: 83dvh;
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            background-color: #369CD9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            height: 100px;
+            padding: 1rem;
+        }
+
+        nav h3 {
+            font-family: kanit;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .nav svg {
+            cursor: pointer;
+        }
+
+        .summary {
+            display: flex;
+            justify-content: space-between;
+            background-color: #ffffff;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 8px;
+        }
+
+        .summary-item {
+            text-align: center;
+
+        }
+
+        .summary-item .header {
+            display: flex;
+            align-items: center;
+            color: #009DE0;
+            font-size: 12px;
+            font-weight: 400;
+            margin: 10px 0;
+        }
+
+        .summary-item .header p {
+            margin: 0 0 0 5px;
+        }
+
+        .summary-item h2 {
+            margin: 0;
+            color: #4E4E4E;
+            font-size: 16px;
+            font-weight: 500;
+
+        }
+
+        .tabs {
+            display: flex;
+            gap: 15px;
+            margin: 1rem 0;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 0.5rem 0;
+            text-align: center;
+            background-color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0px 16px 24px 0px #0000000D;
+        }
+
+        .tab.active {
+            background-color: #009DE0;
+            color: white;
+        }
+
+        .dispenser {
+            margin-top: 5px;
+            margin-bottom: 25px
+        }
+
+        .dispenser label {
+            color: #4F4F4F;
+            font-weight: 400;
+            font-size: 14px;
+            margin: 10px 0 5px 10px;
+        }
+
+        .filter label {
+            color: #4F4F4F;
+            font-weight: 400;
+            font-size: 14px;
+            margin: 10px 0 0 10px;
+        }
+
+        .form-control {
+            border: none;
+            width: 100%;
+            height: 48px;
+            font-size: 16px;
+            color: #4E4E4E;
+            font-weight: 300;
+            border-radius: 6px;
+            box-shadow: 0px 10px 20px 0px #0000000D;
+        }
+
+        #date-picker {
+            border: none;
+            width: 100%;
+            padding: 22px 15px;
+            font-size: 16px;
+            color: #4E4E4E;
+            font-weight: 300;
+            border-radius: 6px;
+            box-shadow: 0px 10px 20px 0px #0000000D;
+        }
+
+        #chart {
+            max-width: 600px;
+            margin: 0 auto 0 0;
+        }
+
+        .bar-container {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .time-label {
+            color: #4E4E4E;
+            font-size: 13px;
+            margin-right: 10px;
+            transition: width 0.3s ease;
+            /* Smooth transition for width change */
+        }
+
+        .bar {
+            background-color: #009DE0;
+            height: 24px;
+            margin-right: 5px;
+            transition: width 0.3s;
+        }
+
+        .bar-label {
+            color: #4E4E4E;
+            font-size: 10px;
+            white-space: nowrap;
+        }
+
+        .divider {
+            border: none;
+            border-left: 1px solid #F2F2F2;
+            height: 63px;
+            margin: 0 10px;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid min-vh-100 border border-primary">
+        <!-- Header -->
+        <nav>
+            <a href="1.html">
+                <svg class="btn-back" width="12" height="20" viewBox="0 0 12 20" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M2.61526 9.99795L11.1073 1.27095C11.1772 1.20063 11.2325 1.11713 11.2699 1.0253C11.3073 0.933466 11.3262 0.835122 11.3253 0.735957C11.3245 0.636792 11.304 0.538775 11.2651 0.447578C11.2261 0.35638 11.1695 0.273814 11.0984 0.204657C11.0273 0.135499 10.9432 0.0811237 10.851 0.0446769C10.7588 0.00823013 10.6602 -0.00956431 10.5611 -0.0076766C10.4619 -0.00578889 10.3642 0.0157435 10.2734 0.0556744C10.1826 0.0956054 10.1007 0.153142 10.0323 0.224955L1.03226 9.47495C0.896042 9.61497 0.819824 9.80261 0.819824 9.99795C0.819824 10.1933 0.896042 10.3809 1.03226 10.521L10.0323 19.771C10.1007 19.8428 10.1826 19.9003 10.2734 19.9402C10.3642 19.9802 10.4619 20.0017 10.5611 20.0036C10.6602 20.0055 10.7588 19.9877 10.851 19.9512C10.9432 19.9148 11.0273 19.8604 11.0984 19.7913C11.1695 19.7221 11.2261 19.6395 11.2651 19.5483C11.304 19.4571 11.3245 19.3591 11.3253 19.26C11.3262 19.1608 11.3073 19.0624 11.2699 18.9706C11.2325 18.8788 11.1772 18.7953 11.1073 18.725L2.61526 9.99795Z"
+                        fill="white" />
+                </svg>
+            </a>
+            <h3>ยอดขายต่อหัวจ่าย</h3>
+            <svg class="invisible" width="15" height="14" viewBox="0 0 15 14" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M0.925049 12.59L2.33505 14L7.92505 8.41L13.515 14L14.925 12.59L9.33505 7L14.925 1.41L13.515 0L7.92505 5.59L2.33505 0L0.925049 1.41L6.51505 7L0.925049 12.59Z"
+                    fill="white" />
+            </svg>
+        </nav>
+        <div class="container">
+            <section class="summary">
+                <div class="summary-item">
+                    <div class="header">
+                        <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6.50002 11.8337C3.27827 11.8337 0.666687 9.22208 0.666687 6.00033C0.666687 2.77858 3.27827 0.166992 6.50002 0.166992C9.72177 0.166992 12.3334 2.77858 12.3334 6.00033C12.3334 9.22208 9.72177 11.8337 6.50002 11.8337ZM6.50002 10.667C7.7377 10.667 8.92468 10.1753 9.79985 9.30016C10.675 8.42499 11.1667 7.238 11.1667 6.00033C11.1667 4.76265 10.675 3.57566 9.79985 2.70049C8.92468 1.82532 7.7377 1.33366 6.50002 1.33366C5.26234 1.33366 4.07536 1.82532 3.20019 2.70049C2.32502 3.57566 1.83335 4.76265 1.83335 6.00033C1.83335 7.238 2.32502 8.42499 3.20019 9.30016C4.07536 10.1753 5.26234 10.667 6.50002 10.667ZM5.91669 8.33366H4.16669V3.66699H5.91669V2.50033H7.08335V3.66699H7.66669C7.93752 3.66699 8.203 3.74241 8.43338 3.88479C8.66376 4.02718 8.84994 4.2309 8.97106 4.47314C9.09218 4.71538 9.14345 4.98656 9.11913 5.25629C9.09481 5.52603 8.99585 5.78366 8.83335 6.00033C8.99585 6.21699 9.09481 6.47462 9.11913 6.74436C9.14345 7.01409 9.09218 7.28527 8.97106 7.52751C8.84994 7.76975 8.66376 7.97347 8.43338 8.11586C8.203 8.25824 7.93752 8.33366 7.66669 8.33366H7.08335V9.50033H5.91669V8.33366ZM5.33335 6.58366V7.16699H7.66669C7.74404 7.16699 7.81823 7.13626 7.87293 7.08156C7.92762 7.02687 7.95835 6.95268 7.95835 6.87533C7.95835 6.79797 7.92762 6.72378 7.87293 6.66909C7.81823 6.61439 7.74404 6.58366 7.66669 6.58366H5.33335ZM5.33335 4.83366V5.41699H7.66669C7.74404 5.41699 7.81823 5.38626 7.87293 5.33156C7.92762 5.27687 7.95835 5.20268 7.95835 5.12533C7.95835 5.04797 7.92762 4.97378 7.87293 4.91909C7.81823 4.86439 7.74404 4.83366 7.66669 4.83366H5.33335Z"
+                                fill="#009DE0" />
+                        </svg>
+                        <p>ยอดขายวันนี้</p>
+                    </div>
+
+                    <h2>10,000.00 บาท</h2>
+                </div>
+                <hr class="divider">
+                <div class="summary-item">
+                    <div class="header">
+                        <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6.50002 11.8337C3.27827 11.8337 0.666687 9.22208 0.666687 6.00033C0.666687 2.77858 3.27827 0.166992 6.50002 0.166992C9.72177 0.166992 12.3334 2.77858 12.3334 6.00033C12.3334 9.22208 9.72177 11.8337 6.50002 11.8337ZM6.50002 10.667C7.7377 10.667 8.92468 10.1753 9.79985 9.30016C10.675 8.42499 11.1667 7.238 11.1667 6.00033C11.1667 4.76265 10.675 3.57566 9.79985 2.70049C8.92468 1.82532 7.7377 1.33366 6.50002 1.33366C5.26234 1.33366 4.07536 1.82532 3.20019 2.70049C2.32502 3.57566 1.83335 4.76265 1.83335 6.00033C1.83335 7.238 2.32502 8.42499 3.20019 9.30016C4.07536 10.1753 5.26234 10.667 6.50002 10.667ZM5.91669 8.33366H4.16669V3.66699H5.91669V2.50033H7.08335V3.66699H7.66669C7.93752 3.66699 8.203 3.74241 8.43338 3.88479C8.66376 4.02718 8.84994 4.2309 8.97106 4.47314C9.09218 4.71538 9.14345 4.98656 9.11913 5.25629C9.09481 5.52603 8.99585 5.78366 8.83335 6.00033C8.99585 6.21699 9.09481 6.47462 9.11913 6.74436C9.14345 7.01409 9.09218 7.28527 8.97106 7.52751C8.84994 7.76975 8.66376 7.97347 8.43338 8.11586C8.203 8.25824 7.93752 8.33366 7.66669 8.33366H7.08335V9.50033H5.91669V8.33366ZM5.33335 6.58366V7.16699H7.66669C7.74404 7.16699 7.81823 7.13626 7.87293 7.08156C7.92762 7.02687 7.95835 6.95268 7.95835 6.87533C7.95835 6.79797 7.92762 6.72378 7.87293 6.66909C7.81823 6.61439 7.74404 6.58366 7.66669 6.58366H5.33335ZM5.33335 4.83366V5.41699H7.66669C7.74404 5.41699 7.81823 5.38626 7.87293 5.33156C7.92762 5.27687 7.95835 5.20268 7.95835 5.12533C7.95835 5.04797 7.92762 4.97378 7.87293 4.91909C7.81823 4.86439 7.74404 4.83366 7.66669 4.83366H5.33335Z"
+                                fill="#009DE0" />
+                        </svg>
+                        <p>ยอดขายทั้งหมด</p>
+                    </div>
+                    <h2>105,678.00 บาท</h2>
+                </div>
+            </section>
+            <section class="filter">
+                <label id="date-label" for="date-picker">วันที่</label>
+                <input class="form-control" type="date" id="date-picker" value="2024-09-23">
+            </section>
+            <section class="dispenser">
+                <label id="date-label" for="date-picker">เลือกหัวจ่าย</label>
+                <select class="form-control" required>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+            </section>
+
+            <div id="chart"></div>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    const tabs = document.querySelectorAll(".tab");
+                    const datePicker = document.getElementById("date-picker");
+                    const dateLabel = document.getElementById("date-label");
+                    const chart = document.getElementById("chart");
+
+                    const dailyData = [
+                        { time: "11 PM - 12:00 PM", value: 100 },
+                        { time: "10 PM - 10:59 PM", value: 150 },
+                        { time: "9 PM - 9:59 PM", value: 200 },
+                        { time: "8 PM - 8:59 PM", value: 150 },
+                        { time: "7 PM - 7:59 PM", value: 150 },
+                        { time: "6 PM - 6:59 PM", value: 500 },
+                        { time: "5 PM - 5:59 PM", value: 600 },
+                        { time: "4 PM - 4:59 PM", value: 50 },
+                    ];
+
+                    const monthlyData = [
+                        { day: "31", value: 100000 },
+                        { day: "30", value: 50000 },
+                        { day: "29", value: 100000 },
+                        { day: "28", value: 50000 },
+                        { day: "27", value: 50000 },
+                        { day: "26", value: 25000 },
+                        { day: "25", value: 60000 },
+                        { day: "24", value: 40000 },
+                        { day: "23", value: 100000 },
+                        { day: "22", value: 50000 },
+                        { day: "21", value: 100000 },
+                        { day: "20", value: 50000 },
+                        { day: "19", value: 50000 },
+                        { day: "18", value: 25000 },
+                        { day: "17", value: 60000 },
+                        { day: "16", value: 40000 },
+                        { day: "15", value: 100000 },
+                        { day: "14", value: 20000 },
+                        { day: "13", value: 100000 },
+                        { day: "12", value: 50000 },
+                        { day: "11", value: 50000 },
+                        { day: "10", value: 50000 },
+                        { day: "09", value: 25000 },
+                        { day: "08", value: 40000 },
+                        { day: "07", value: 100000 },
+                        { day: "06", value: 50000 },
+                        { day: "05", value: 100000 },
+                        { day: "04", value: 50000 },
+                        { day: "03", value: 50000 },
+                        { day: "02", value: 50000 },
+                        { day: "01", value: 25000 },
+                    ];
+
+                    const yearlyData = [
+                        { month: "มกราคม", value: 2000000 },
+                        { month: "กุมภาพันธ์", value: 1500000 },
+                        { month: "มีนาคม", value: 2000000 },
+                        { month: "เมษายน", value: 1500000 },
+                        { month: "พฤษภาคม", value: 1500000 },
+                        { month: "มิถุนายน", value: 500000 },
+                        { month: "กรกฎาคม", value: 600000 },
+                        { month: "สิงหาคม", value: 400000 },
+                        { month: "กันยายน", value: 1500000 },
+                        { month: "ตุลาคม", value: 1500000 },
+                        { month: "พฤศจิกายน", value: 500000 },
+                        { month: "ธันวาคม", value: 600000 },
+                    ];
+
+                    const renderChart = (data, type = "daily") => {
+                        chart.innerHTML = "";
+                        const maxWidth = 186;
+                        const maxDataValue = Math.max(...data.map((item) => item.value));
+
+                        data.forEach((item) => {
+                            const barContainer = document.createElement("div");
+                            barContainer.className = "bar-container";
+
+                            const labelElement = document.createElement("div");
+                            labelElement.className = "time-label";
+                            labelElement.textContent =
+                                type === "daily"
+                                    ? item.time
+                                    : type === "monthly"
+                                        ? `${item.day}`
+                                        : `${item.month}`;
+
+                            const bar = document.createElement("div");
+                            bar.className = "bar";
+                            bar.style.width = `${(item.value / maxDataValue) * maxWidth}px`;
+
+                            const barLabel = document.createElement("span");
+                            barLabel.className = "bar-label";
+                            barLabel.textContent = `${item.value.toLocaleString()} บาท`;
+
+                            barContainer.appendChild(labelElement);
+                            barContainer.appendChild(bar);
+                            barContainer.appendChild(barLabel);
+                            chart.appendChild(barContainer);
+                        });
+
+                        const timeLabels = document.querySelectorAll(".time-label");
+                        timeLabels.forEach((label) => {
+                            if (type === "daily") {
+                                label.style.width = "95px";
+                            } else if (type === "monthly") {
+                                label.style.width = "20px";
+                            } else if (type === "yearly") {
+                                label.style.width = "60px";
+                            }
+                        });
+                    };
+
+                    renderChart(dailyData);
+
+                    tabs.forEach((tab) => {
+                        tab.addEventListener("click", () => {
+                            tabs.forEach((t) => t.classList.remove("active"));
+                            tab.classList.add("active");
+
+                            if (tab.dataset.tab === "daily") {
+                                datePicker.type = "date";
+                                datePicker.value = "2024-09-23";
+                                dateLabel.textContent = "วันที่";
+                                renderChart(dailyData, "daily");
+                            } else if (tab.dataset.tab === "monthly") {
+                                datePicker.type = "month";
+                                datePicker.value = "2024-09";
+                                dateLabel.textContent = "เลือกเดือน";
+                                renderChart(monthlyData, "monthly");
+                            } else if (tab.dataset.tab === "yearly") {
+                                datePicker.type = "number";
+                                datePicker.value = "2024";
+                                dateLabel.textContent = "เลือกปี";
+                                renderChart(yearlyData, "yearly");
+                            }
+                        });
+                    });
+                });
+            </script>
+</body>
+
+</html>
